@@ -12,6 +12,7 @@ class Collector
 	threshold = 0.5
 	timeGap = 2.0
 	currentUsr = ''
+	garbage = [[],[],[]]
 
 	def __init__(self, address, space = [100,100,100], threshold = 0.5, state = 0, debug = False, timeGap = 2.0):
 		super().__init__()
@@ -30,6 +31,8 @@ class Collector
 
 		self.currentUsr = ''
 		self.timeGap = timeGap
+		garbage = [[],[],[]]
+		usedSpace = [0,0,0]
 
 	def send(self):
 		# do it periodically
@@ -57,11 +60,12 @@ class Collector
 		self.state = 0
 		self.currentUsr = ''
 
-	def QTgenerate(self, garbageType):
+	def QTgenerate(self, garbageType,garbage):
 		if(self.state != 1):
 			return [-1,'']
 		else:
 			self.usedSpace[garbageType] += 1
+			self.garbage[garbageType] += grabage
 			examSpace()
 			return [garbageType,self.currentUsr]
 
@@ -130,4 +134,7 @@ class Collector
 		if(self.state != 2):
 			return 0
 		else:
+			g = self.garbage[garbageType]
 			self.usedSpace[garbageType] = 0
+			self.garbage[garbageType] = []
+			return g
