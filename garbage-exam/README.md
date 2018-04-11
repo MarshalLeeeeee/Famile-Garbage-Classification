@@ -7,6 +7,7 @@
   <li><p>Inorganic: medal, glass, plastic, dust, ceramic, paper, fiber, ...</p></li>
 </ul>
 
+<p> This script runs under the framework of tensorflow.</p>
 <p> Using pre-trained model of imageNet in ILSVRC 2012 to recognize the picture.</p>
 <p> Using pre-trained model of Glove's word vetor - glove_model_6B.</p>
 <p> To run the script, the additional model file of above 2 should be download to your computer.</p>
