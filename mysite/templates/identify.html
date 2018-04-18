@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改信息</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {%for message in messages %}
+        <li{%if message.tags %} class="{{ message.tags }}"{% endif %}>{{message }}</li>
+        {%endfor %}
+    </ul>
+    {% endif %}
+    <form method="post">
+        <table>
+                <tr><td><span>用户名</span></td><td><input type="text" name="user_name" id="user_name" /></td></tr>
+                <tr><td><span>家庭住址</span></td><td><input type="text" name="user_address" id="user_address" /></td></tr>
+                <tr><td><span>手机号码</span></td><td><input type="text" name="user_phone" id="user_phone" /></td></tr>
+                <tr><td colspan="2"><input type="submit" name="submit" value="上传信息" /></td><td><a id="retutn_to_login" href="http://127.0.0.1:8000/index">注销</a></td></tr>
+        </table>
+    </form>
+    <div id="record"></div>
+</body>
+    <script language="JavaScript" type="text/javascript" src="/static/js/identify.js" ></script>
+
+</html>

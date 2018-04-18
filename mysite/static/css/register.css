@@ -1,0 +1,64 @@
+#retutn_to_login{
+    position:absolute;
+    color:red;
+    font-size: 5px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+}
+#warning{
+    position:absolute;
+    color:red;
+    font-size: 10px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    }
+div{
+    background:#009FCC;
+    font-size:24px;
+    padding:5px;
+    color:white;
+}
+form{
+    background: #F8F8FF ;
+    border:#357FC4 solid 1px;
+    color:#575454;
+    width:400px;
+    margin:20px auto;
+    font-size:15px;
+}
+table{
+    margin:10px auto;
+}
+a{
+    text-decoration:none;
+}
+input[type="submit"]{
+    background:#228B22;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    width:120px;
+    height:40px;
+}
+td:first-child{
+    text-align:right;
+    padding:0 5px;
+}
+td:only-child{
+    text-align:center;
+    font-size:12px;
+}
+span:before{
+    content:"* ";
+    color:red;
+}
+input[type="text"]:read-only{
+    border:#888484 solid 2px;
+    background:#888484;
+    font-weight:bold;
+}
+input[type="text"]:hover{
+    background:#EFD9AC;
+}

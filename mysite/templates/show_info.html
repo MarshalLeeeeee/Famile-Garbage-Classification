@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <script language="JavaScript" type="text/javascript"  >
+        var thisURL = document.URL;
+        var  getval =thisURL.split('?')[1];
+        var showval= getval.split("=")[1];
+        var all_info = showval.split('!');
+        function open_up() {
+            window.location.href = 'http://127.0.0.1:8000/identify?info='+ all_info[0] +'!' + all_info[2] + '!' + all_info[3];
+        }
+    </script>
+
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {%for message in messages %}
+        <li{%if message.tags %} class="{{ message.tags }}"{% endif %}>{{message }}</li>
+        {%endfor %}
+    </ul>
+    {% endif %}
+    <form method="post">
+        <table>
+                <tr><td><span>用户名</span></td><td><input type="text" name="user_name" id="user_name" /></td></tr>
+                <tr><td><span>家庭住址</span></td><td><input type="text" name="user_address" id="user_address" /></td></tr>
+                <tr><td><span>手机号码</span></td><td><input type="text" name="user_phone" id="user_phone" /></td></tr>
+                <tr><td><span>账户余额</span></td><td><span type="text" name="user_account" id="user_account"></span></td></tr>
+                <tr><td colspan="2"><input type="button" onclick="open_up()" value="修改信息"></input></td><td><a id="retutn_to_login" href="http://127.0.0.1:8000/index">注销</a></td></tr>
+                <tr><td><select name="type">
+                            <option value=0>有害</option>
+                            <option value=1>有机</option>
+                            <option value=2>无机</option>
+                        </select>
+                    </td>
+                    <td colspan="2"><input type="submit" name="submit" value="上传垃圾信息" /></td>
+                </tr>
+        </table>
+    </form>
+    <table>
+                <tr><td></td><td>有害</td><td>有机</td><td>无机</td></tr>
+                <tr><td>总容量</td><td>100</td><td>100</td><td>100</td></tr>
+                <tr><td>已用</td><td>{{ data1 }}</td><td>{{ data2 }}</td><td>{{ data3 }}</td></tr>
+    </table>
+    <div id="record"></div>
+    <script language="JavaScript" type="text/javascript"  >
+        var thisURL = document.URL;
+        var  getval =thisURL.split('?')[1];
+        var showval= getval.split("=")[1];
+        var all_info = showval.split('!');
+        {#console.log(all_info);#}
+        document.getElementById("user_name").value = all_info[0];
+        document.getElementById("user_account").innerHTML = all_info[1];
+        document.getElementById("user_phone").value = all_info[2];
+        document.getElementById("user_address").value = all_info[3];
+        info = all_info[4];
+        {#console.log(info)#}
+        {#document.getElementById("record").innerHTML = all_info[4];#}
+        str = "<table><tr><td>正确</td><tr>";
+        {#correct_num = info[0];#}
+        {#error_num = info[1];#}
+        {#info = info.substring(2);#}
+        var arr_info = new Array();
+        arr_info[0] = new Array();
+        arr_info[1] = new Array();
+        var temp1 = info.split("@");
+        {#temp1 = info.split("$");#}
+        console.log(temp1);
+        if(temp1[2]){
+                arr_info[0] = temp1[2].split("&");
+                for(j=0;j<temp1[0];j++) {
+                str += "<tr>";
+                str += "<td>" + arr_info[0][j] + "</td>";
+                str += "</tr>";
+            }
+        }
+        str+="<tr><td>错误</td><tr>";
+        if(temp1[3]){
+                arr_info[1] = temp1[3].split("&");
+                for(j=0;j<temp1[1];j++){
+                str += "<tr>";
+                str += "<td>" + arr_info[1][j] + "</td>";
+                str += "</tr>";
+            }
+        }
+
+
+        str += "</table>";
+        document.getElementById("record").innerHTML = str;
+    </script>
+</body>
+</html>

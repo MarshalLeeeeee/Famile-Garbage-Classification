@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+</head>
+<body class="bk">
+    {% if messages %}
+        <ul class="messages">
+            {%for message in messages %}
+            <li{%if message.tags %} class="{{ message.tags }}"{% endif %}>{{message }}</li>
+            {%endfor %}
+        </ul>
+    {% endif %}
+    <div id = 'login_frame'>
+        <form method="post">
+            <p><label class="label_input">用户名</label><input type="text" name="username" class="text_field"/></p>
+            <p><label class="label_input">密码</label><input type="password" name="password" class="text_field"/></p>
+
+            <div id = 'login_control'>
+                <select name="type">
+                            <option value=3>修理人员</option>
+                            <option value=2>收集人员</option>
+                </select>
+                <input type="submit" id="btn_login" value="登录"/>
+                <a id="retutn_to_login" href="http://127.0.0.1:8000/index">返回</a>
+            </div>
+        </form>
+
+    {#    <h1 style="background-color: antiquewhite;clolor:black;">用户</h1>#}
+    {#    <table border="1">#}
+    {#        <thead>#}
+    {#            <th>用户名</th>#}
+    {#            <th>密码</th>#}
+    {#        </thead>#}
+    {#        <tbody>#}
+    {#            {% for line in data %}#}
+    {#                <tr>#}
+    {#                    <td>{{ line.user }}</td>#}
+    {#                    <td>{{ line.pwd }}</td>#}
+    {#                </tr>#}
+    {#            {% endfor %}#}
+    {#        </tbody>#}
+    {#    </table>#}
+        <script src="/static/js/jquery-1.12.4.js"></script>
+    </div>
+</body>
+</html>

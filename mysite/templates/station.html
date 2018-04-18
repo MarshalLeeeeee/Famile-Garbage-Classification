@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垃圾站登录</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+</head>
+
+<body class="bk">
+    {% if messages %}
+    <ul class="messages">
+        {%for message in messages %}
+        <li{%if message.tags %} class="{{ message.tags }}"{% endif %}>{{message }}</li>
+        {%endfor %}
+    </ul>
+    {% endif %}
+    <div id = 'login_frame'>
+        <p id = 'image_logo'><img src='/static/img/login_logo.jpg'></p>
+        <form method="post">
+            <p><label class="label_input">用户名</label><input type="text" name="username" class="text_field"/></p>
+            <p><label class="label_input">密码</label><input type="password" name="password" class="text_field"/></p>
+            <div id = 'login_control'>
+                <input type="submit" id="btn_login" value="登录"/>
+                <a id="reg" href="http://127.0.0.1:8000/station">处理完成</a>
+            </div>
+        </form>
+
+        <script src="/static/js/jquery-1.12.4.js"></script>
+    </div>
+</body>
+</html>
